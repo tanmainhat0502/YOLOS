@@ -105,6 +105,11 @@ def get_args_parser():
     parser.add_argument('--world_size', default=1, type=int,
                         help='number of distributed processes')
     parser.add_argument('--dist_url', default='env://', help='url used to set up distributed training')
+    parser.add_argument('--wandb_project', default="YOLOS-finetune", type=str,
+                    help="Name of the wandb project")
+    parser.add_argument('--wandb_name', default=None, type=str,
+                    help="Custom name for wandb run")
+
     return parser
 
 
@@ -115,10 +120,11 @@ def main(args):
     print(args)
     if utils.is_main_process():
         wandb.init(
-            project="YOLOS-finetune",
-            name=f"run-{int(time.time())}",
-            config=vars(args)
-        )
+        project=args.wandb_project,
+        name=args.wandb_name if args.wandb_name else f"run-{int(time.time())}",
+        config=vars(args)
+    )
+
 
     device = torch.device(args.device)
 
@@ -199,7 +205,7 @@ def main(args):
             checkpoint = torch.hub.load_state_dict_from_url(
                 args.resume, map_location='cpu', check_hash=True)
         else:
-            checkpoint = torch.load(args.resume, map_location='cpu',weights_only=False)
+            checkpoint = torch.load(args.resume, map_location='cpu', weights_only=False)
         model_without_ddp.load_state_dict(checkpoint['model'])
         if not args.eval and 'optimizer' in checkpoint and 'lr_scheduler' in checkpoint and 'epoch' in checkpoint:
             optimizer.load_state_dict(checkpoint['optimizer'])
