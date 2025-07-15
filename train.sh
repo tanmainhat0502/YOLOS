@@ -9,5 +9,5 @@ python3 main.py \
     --init_pe_size 512 864 \
     --mid_pe_size 512 864 \
     --output_dir run \
-    --wandb_project EmoticGender-Detection \
+    --wandb_project YOLOS_TTM \
     --wandb_name yolos_verrr
