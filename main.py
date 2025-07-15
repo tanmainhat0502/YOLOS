@@ -113,6 +113,8 @@ def get_args_parser():
     return parser
 
 
+
+
 def main(args):
     utils.init_distributed_mode(args)
     # print("git:\n  {}\n".format(utils.get_sha()))
@@ -226,8 +228,9 @@ def main(args):
             sampler_train.set_epoch(epoch)
         train_stats = train_one_epoch(
             model, criterion, data_loader_train, optimizer, device, epoch,
-            args.clip_max_norm)
+            args.clip_max_norm, use_amp=True)
         lr_scheduler.step(epoch)
+        torch.cuda.empty_cache() 
         if args.output_dir:
             checkpoint_paths = [output_dir / 'checkpoint.pth']
             # extra checkpoint before LR drop and every 100 epochs
