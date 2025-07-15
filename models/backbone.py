@@ -422,7 +422,7 @@ def small(pretrained=None, **kwargs):
         #     url="https://dl.fbaipublicfiles.com/deit/deit_small_patch16_224-cd65a155.pth",
         #     map_location="cpu", check_hash=True
         # )
-        checkpoint = torch.load(pretrained, map_location="cpu")
+        checkpoint = torch.load(pretrained, map_location="cpu", weights_only=False)
         model.load_state_dict(checkpoint["model"], strict=False)
     return model, 384
 
