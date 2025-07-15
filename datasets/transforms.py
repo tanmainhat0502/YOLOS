@@ -20,7 +20,7 @@ def crop(image, target, region):
     i, j, h, w = region
 
     # should we do something wrt the original size?
-    target["size"] = torch.tensor([h, w])
+    target["size"] = torch.tensor([int(h), int(w)], dtype=torch.int64)
 
     fields = ["labels", "area", "iscrowd"]
 
