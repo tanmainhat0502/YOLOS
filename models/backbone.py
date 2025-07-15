@@ -434,7 +434,7 @@ def small_dWr(pretrained=None, **kwargs):
         norm_layer=partial(nn.LayerNorm, eps=1e-6), **kwargs)
     if pretrained:
         # checkpoint = torch.load('fa_deit_ldr_14_330_240.pth', map_location="cpu")
-        checkpoint = torch.load(pretrained, map_location="cpu")
+        checkpoint = torch.load(pretrained, map_location="cpu", weights_only=False)
         model.load_state_dict(checkpoint["model"], strict=False)
     return model, 330
 
