@@ -12,8 +12,7 @@ import torchvision.transforms.functional as F
 from util.box_ops import box_xyxy_to_cxcywh
 from util.misc import interpolate
 import numpy as np
-print("HELLO")
-exit()
+
 def crop(image, target, region):
     cropped_image = F.crop(image, *region)
 
