@@ -1,13 +1,13 @@
 python3 main.py \
     --coco_path /root/yolos/data4training \
-    --batch_size 8 \
+    --batch_size 2 \
     --lr 2.5e-5 \
     --epochs 2 \
     --backbone_name small_dWr \
     --pre_trained /root/yolos/deit_s_dWr_300.pth \
     --eval_size 600 \
-    --init_pe_size 512 864 \
-    --mid_pe_size 512 864 \
+    --init_pe_size 384 640 \
+    --mid_pe_size 384 640 \
     --output_dir run \
     --wandb_project YOLOS_TTM \
     --wandb_name yolos_verrr
