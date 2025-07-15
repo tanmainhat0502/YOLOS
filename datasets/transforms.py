@@ -137,7 +137,7 @@ def resize(image, target, size, max_size=None):
         target["area"] = scaled_area
 
     h, w = size
-    target["size"] = torch.tensor([h, w])
+    target["size"] = torch.tensor([int(h), int(w)], dtype=torch.int64)
 
     if "masks" in target:
         target['masks'] = interpolate(
