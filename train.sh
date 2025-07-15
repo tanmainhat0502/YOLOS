@@ -1,12 +1,13 @@
-python -m torch.distributed.launch --nproc_per_node=2 --master_port=12355 \
-    --use_env main.py \
-    --coco_path /mnt/Userdrive/tiennv/nnthanh/datasets/EmoticGender_COCO \
-    --batch_size 1 \
+python3 main.py \
+    --coco_path /root/yolos/data4training \
+    --batch_size 8 \
     --lr 2.5e-5 \
-    --epochs 500 \
+    --epochs 2 \
     --backbone_name small_dWr \
-    --pre_trained weights/deit_s_dWr_300.pth \
+    --pre_trained /root/yolos/deit_s_dWr_300.pth \
     --eval_size 600 \
     --init_pe_size 512 864 \
     --mid_pe_size 512 864 \
-    --output_dir run
+    --output_dir run \
+    --wandb_project EmoticGender-Detection \
+    --wandb_name yolos_verrr
