@@ -228,7 +228,7 @@ def main(args):
             sampler_train.set_epoch(epoch)
         train_stats = train_one_epoch(
             model, criterion, data_loader_train, optimizer, device, epoch,
-            args.clip_max_norm, use_amp=True)
+            args.clip_max_norm)
         lr_scheduler.step(epoch)
         torch.cuda.empty_cache() 
         if args.output_dir:
