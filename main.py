@@ -19,7 +19,12 @@ from engine import evaluate, train_one_epoch
 from models import build_model as build_yolos_model
 
 from util.scheduler import create_scheduler
+import os
 
+local_rank = int(os.environ["LOCAL_RANK"])
+torch.cuda.set_device(local_rank)
+
+torch.distributed.init_process_group(backend="nccl")
 
 def get_args_parser():
     parser = argparse.ArgumentParser('Set YOLOS', add_help=False)
