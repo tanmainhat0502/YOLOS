@@ -1,5 +1,5 @@
 python3 main.py \
-    --coco_path /workspace/data4training \
+    --coco_path /workspace/yolos/data4training \
     --batch_size 2 \
     --lr 2.5e-5 \
     --epochs 100 \
