@@ -1,4 +1,4 @@
-!python -m torch.distributed.launch --nproc_per_node=2 --master_port=12345 \
+torchrun -m torch.distributed.launch --nproc_per_node=2 --master_port=12345 \
     --use_env main.py \
     --coco_path /workspace/yolos/data4training \
     --batch_size 2 \
