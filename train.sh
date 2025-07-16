@@ -1,10 +1,10 @@
 python3 main.py \
-    --coco_path /root/yolos/data4training \
+    --coco_path /workspace/data4training \
     --batch_size 2 \
     --lr 2.5e-5 \
-    --epochs 2 \
+    --epochs 100 \
     --backbone_name small_dWr \
-    --pre_trained /root/yolos/deit_s_dWr_300.pth \
+    --pre_trained /workspace/yolos/deit_s_dWr_300.pth \
     --eval_size 600 \
     --init_pe_size 384 640 \
     --mid_pe_size 384 640 \
