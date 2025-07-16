@@ -1,4 +1,4 @@
-torchrun --nproc_per_node=2 --master_port=12345 \
+torchrun --nproc_per_node=2 --master_port=29500 \
     main.py \
     --coco_path /workspace/yolos/data4training \
     --batch_size 2 \
