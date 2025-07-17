@@ -21,7 +21,7 @@ from models import build_model as build_yolos_model
 from util.scheduler import create_scheduler
 import os
 
-local_rank = int(os.environ["LOCAL_RANK"])
+local_rank = int(os.environ.get("LOCAL_RANK", -1))
 torch.cuda.set_device(local_rank)
 
 
